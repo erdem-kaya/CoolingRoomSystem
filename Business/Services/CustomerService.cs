@@ -70,6 +70,7 @@ public class CustomerService(ICustomerRepository customerRepository) : ICustomer
         try
         {
             var findCustomer = await _customerRepository.GetItemAsync(x => x.Id == form.Id) ?? throw new Exception($"User with ID {form.Id} does not exist.");
+            findCustomer.UpdatedAt = DateTime.Now;
             CustomerFactory.Update(findCustomer, form);
             var updatedCustomer = await _customerRepository.UpdateAsync(x => x.Id == form.Id, findCustomer);
             var result = updatedCustomer != null ? CustomerFactory.Create(updatedCustomer) : null!;

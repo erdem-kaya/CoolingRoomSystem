@@ -70,6 +70,7 @@ public class CoolingRoomRepository(DataContext context) : BaseRepository<Cooling
 
     public async Task UpdateAllCoolingRoomPriceAsync(int coolingRoomPriceId)
     {
+
         try
         {
             var coolingRoomPrice = await _context.CoolingRoomPriceControl
