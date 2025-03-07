@@ -123,12 +123,13 @@ public class CoolingRoomService(ICoolingRoomRepository coolingRoomRepository) : 
         }
     }
 
-    public async Task<IEnumerable<CoolingRoomEntity>> GetAvailableCoolingRoomsAsync()
+    public async Task<IEnumerable<CoolingRoomReportsForm>> GetAvailableCoolingRoomsAsync()
     {
         try
         {
             var coolingRooms = await _coolingRoomRepository.GetAvailableCoolingRoomsAsync();
-            return coolingRooms;
+            var result = coolingRooms.Select(CoolingRoomFactory.CreateReports).ToList();
+            return result;
         }
         catch (Exception ex)
         {

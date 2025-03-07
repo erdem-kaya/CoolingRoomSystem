@@ -13,7 +13,7 @@ public interface ICoolingRoomService
 
     // Get available rooms
     // Kullanilabilir odalari getir
-    Task<IEnumerable<CoolingRoomEntity>> GetAvailableCoolingRoomsAsync();
+    Task<IEnumerable<CoolingRoomReportsForm>> GetAvailableCoolingRoomsAsync();
 
     // Number of available Cooling rooms between selected dates
     // Secilen tarihler arasindaki kullanilabilir soğutma odalarinin sayisi

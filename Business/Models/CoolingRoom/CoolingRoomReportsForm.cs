@@ -6,6 +6,6 @@ public class CoolingRoomReportsForm
     public string RoomName { get; set; } = null!;
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
-    public int RoomStatus { get; set; }
+    public string? RoomStatus { get; set; }
     public decimal UnitPrice { get; set; }
 }

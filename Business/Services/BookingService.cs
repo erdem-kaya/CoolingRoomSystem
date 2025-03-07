@@ -19,6 +19,7 @@ public class BookingService(BookingRepository bookingRepository) : IBookingServi
         try
         {
             var booking = BookingFactory.Create(form);
+            booking.UpdatedAt = DateTime.UtcNow;
             var createdBooking = await _bookingRepository.CreateAsync(booking);
             var result = createdBooking != null ? BookingFactory.Create(createdBooking) : null!;
             await _bookingRepository.CommitTransactionAsync();
@@ -69,6 +70,7 @@ public class BookingService(BookingRepository bookingRepository) : IBookingServi
         {
             var findBooking = await _bookingRepository.GetItemAsync(x => x.Id == form.Id) ?? throw new Exception($"Booking with ID {form.Id} not found.");
             BookingFactory.Update(findBooking, form);
+            findBooking.UpdatedAt = DateTime.UtcNow;
             var updatedBooking = await _bookingRepository.UpdateAsync(x => x.Id == form.Id, findBooking);
             var result = updatedBooking != null ? BookingFactory.Create(updatedBooking) : null!;
             await _bookingRepository.CommitTransactionAsync();
@@ -90,7 +92,8 @@ public class BookingService(BookingRepository bookingRepository) : IBookingServi
         {
             var deletedBooking = await _bookingRepository.DeleteAsync(x => x.Id == id);
             if (!deletedBooking)
-                throw new Exception($"Booking with ID {id} not found.");
+                throw new Exception($"Error deleting booking with ID {id}.");
+
             await _bookingRepository.CommitTransactionAsync();
             return true;
         }

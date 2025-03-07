@@ -33,5 +33,15 @@ public class CoolingRoomFactory
         entity.UpdatedAt = DateTime.UtcNow;
     }
 
+
+    public static CoolingRoomReportsForm CreateReports(CoolingRoomEntity entity) => new()
+    {
+        Id = entity.Id,
+        RoomName = entity.RoomName,
+        CreatedAt = entity.CreatedAt,
+        UpdatedAt = entity.UpdatedAt,
+        RoomStatus = entity.RoomStatus.StatusName,
+        UnitPrice = entity.RoomPrice.UnitPrice
+    };
 }
 

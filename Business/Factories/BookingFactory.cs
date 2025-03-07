@@ -19,7 +19,7 @@ public class BookingFactory
         PaymentId = form.PaymentId,
         CustomerId = form.CustomerId,
         CoolingRoomId = form.CoolingRoomId,
-        CreatedAt = DateTime.Now,
+        CreatedAt = DateTime.UtcNow,
     };
 
     public static BookingForm Create(BookingsEntity entity) => new()
@@ -70,7 +70,7 @@ public class BookingFactory
         if (form.CoolingRoomId != entity.CoolingRoomId)
             entity.CoolingRoomId = form.CoolingRoomId;
 
-        entity.UpdatedAt = DateTime.Now;
+        entity.UpdatedAt = DateTime.UtcNow;
     }
 
     public static BookingReportsForm CreateReports(BookingsEntity entity) => new()
