@@ -9,6 +9,4 @@ public interface ICustomerService
     Task<CustomerForm> GetByIdAsync(int id);
     Task<CustomerForm> UpdateAsync(CustomerUpdateForm form);
     Task<bool> DeleteAsync(int id);
-    Task<CustomerReportsForm> GetPaymentByBookingIdAsync(int bookingId);
-    Task<decimal> GetTotalRevenueAsync();
 }

@@ -1,5 +1,4 @@
 ﻿using Business.Models.CoolingRoom;
-using Data.Contexts;
 using Data.Entities;
 
 namespace Business.Factories;

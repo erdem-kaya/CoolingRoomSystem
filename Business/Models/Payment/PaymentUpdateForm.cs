@@ -2,6 +2,7 @@
 
 public class PaymentUpdateForm
 {
+    public int Id { get; set; }
     public DateTime PaymentDate { get; set; }
     public decimal Amount { get; set; }
     public string PaymentMethod { get; set; } = null!;// Havale, EFT, Kredi Kartı, Nakit kontrolü
